@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SwMapsLibTests
 {
@@ -15,11 +16,11 @@ namespace SwMapsLibTests
 		[TestMethod]
 		public void ExportKmz()
 		{
-			var path = @"Data\\TestSwmz.swmz";
+			var path = Path.Combine("Data", "TestSwmz.swmz");
 			var project = new SwmzReader(path).Read();
 			var exporter = new SwMapsKmzWriter(project);
-			exporter.WriteKml(@"Data\\TestSwmz.kml");
-			exporter.WriteKmz(@"Data\\TestSwmz.kmz");
+			exporter.WriteKml(Path.Combine("Data", "TestSwmz.kml"));
+			exporter.WriteKmz(Path.Combine("Data", "TestSwmz.kmz"));
 		}
 	}
 }
